@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圣诞快乐 - 专属贺卡</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background: #050a14;
+            color: #e0e1dd;
+            margin: 0;
+            overflow: hidden;
+        }
+        .chinese-fancy {
+            font-family: 'Ma Shan Zheng', cursive;
+        }
+        .handwriting {
+            font-family: 'Zhi Mang Xing', cursive;
+        }
+        @keyframes snowfall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: white;
+            user-select: none;
+            pointer-events: none;
+            z-index: 50;
+            animation: snowfall linear infinite;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        .sparkle {
+            position: absolute;
+            background: radial-gradient(circle, #fff 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: sparkle-anim 2s infinite;
+        }
+        @keyframes sparkle-anim {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 0.8; transform: scale(1); }
+        }
+        .envelope-wrapper {
+            perspective: 1500px;
+            transition: all 1s ease-in-out;
+        }
+        .envelope {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background: #8b0000;
+            margin: auto;
+            transform-style: preserve-3d;
+            transition: transform 1s ease-in-out;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .envelope:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            z-index: 2;
+            border-top: 100px solid #a52a2a;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            transform-origin: top;
+            transition: all 0.5s 0.5s ease-in-out;
+        }
+        .envelope.open:before {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+        .envelope:after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            border-top: 100px solid transparent;
+            border-left: 150px solid #800000;
+            border-right: 150px solid #800000;
+            border-bottom: 100px solid #800000;
+            bottom: 0;
+        }
+        .card-preview {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 280px;
+            height: 180px;
+            background: white;
+            z-index: 0;
+            transition: all 1s 0.8s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b0000;
+            font-weight: bold;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .envelope.open .card-preview {
+            transform: translateY(-150px);
+            z-index: 3;
+            opacity: 0;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom": "https://esm.sh/react-dom@^19.2.3",
+    "react-dom/client": "https://esm.sh/react-dom@^19.2.3/client",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
