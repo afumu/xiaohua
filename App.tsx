@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
-import Snowfall from './components/Snowfall';
+import Snowfall from './components/Snowfall.tsx';
 
 const App: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,81 +69,3 @@ const App: React.FC = () => {
             </div>
           </div>
         </div>
-      ) : (
-        <div className="w-full max-w-lg z-10 animate-fade-in relative">
-          {/* 贺卡主体 */}
-          <div className="glass-card rounded-[2rem] p-10 md:p-14 relative overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.8)] border border-white/10">
-            
-            {/* 闪烁效果 */}
-            <div className="sparkle w-2 h-2 top-10 left-10" style={{ animationDelay: '0.2s' }}></div>
-            <div className="sparkle w-1 h-1 top-20 right-20" style={{ animationDelay: '0.8s' }}></div>
-            <div className="sparkle w-3 h-3 bottom-40 left-20" style={{ animationDelay: '1.2s' }}></div>
-            <div className="sparkle w-2 h-2 top-1/2 right-10" style={{ animationDelay: '0.5s' }}></div>
-
-            <header className="relative mb-10">
-              <div className="flex justify-between items-center mb-4">
-                <span className="text-red-600 text-xs tracking-[0.4em] uppercase font-bold">Volume 2025</span>
-                <span className="text-gray-600 text-xs tracking-widest">★ ★ ★ ★ ★</span>
-              </div>
-              <h2 className="text-4xl font-bold text-white chinese-fancy tracking-wider">致 {recipient}</h2>
-              <div className="mt-4 h-0.5 w-16 bg-gradient-to-r from-red-600 to-transparent"></div>
-            </header>
-
-            <main className="relative mb-12">
-              <div className="absolute -left-6 top-0 text-6xl text-white/5 font-serif">“</div>
-              <p className="text-xl md:text-2xl text-gray-200 leading-relaxed handwriting tracking-wide whitespace-pre-line relative z-10">
-                {randomMessage}
-              </p>
-              <div className="absolute -right-6 bottom-0 text-6xl text-white/5 font-serif">”</div>
-            </main>
-
-            <footer className="flex justify-between items-end border-t border-white/5 pt-8">
-              <div className="space-y-1">
-                <p className="text-[10px] text-gray-600 uppercase tracking-[0.2em]">Location</p>
-                <p className="text-xs text-gray-400">Somewhere Under the Stars</p>
-              </div>
-              <div className="text-right">
-                <p className="text-gray-500 text-xs italic mb-2 font-serif tracking-widest">Always yours,</p>
-                <p className="text-4xl font-bold text-red-500 chinese-fancy hover:text-red-400 transition-colors cursor-default drop-shadow-lg">
-                  {sender}
-                </p>
-                <p className="text-[9px] text-gray-600 tracking-[0.1em] mt-1 uppercase">December 2025</p>
-              </div>
-            </footer>
-
-            {/* 背景中的圣诞树轮廓 */}
-            <div className="absolute -bottom-20 -left-20 opacity-[0.05] pointer-events-none transform -rotate-12">
-              <svg width="400" height="400" viewBox="0 0 100 100">
-                <path d="M50 10 L80 80 L20 80 Z" fill="white" />
-                <circle cx="50" cy="15" r="5" fill="white" />
-              </svg>
-            </div>
-          </div>
-
-          <div className="mt-8 text-center flex flex-col items-center gap-4">
-             <button 
-               onClick={() => {window.location.reload();}}
-               className="bg-white/5 hover:bg-white/10 text-white/60 hover:text-white px-6 py-2 rounded-full text-xs tracking-[0.2em] uppercase transition-all border border-white/10"
-             >
-               换一张祝福语 ↺
-             </button>
-             <button 
-               onClick={() => {setShowFullCard(false); setIsOpen(false);}}
-               className="text-gray-600 hover:text-gray-400 text-[10px] tracking-[0.3em] uppercase transition-all"
-             >
-               ← 重新收起信封
-             </button>
-          </div>
-        </div>
-      )}
-
-      {/* 底部装饰性版权 */}
-      <footer className="absolute bottom-6 flex flex-col items-center space-y-2 opacity-30">
-        <div className="w-1 h-8 bg-gradient-to-b from-transparent to-gray-500"></div>
-        <p className="text-[9px] tracking-[0.8em] text-gray-500 uppercase">Dedicated to Xiao Hua · 2025</p>
-      </footer>
-    </div>
-  );
-};
-
-export default App;
